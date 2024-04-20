@@ -17,7 +17,11 @@ class MyRouterDelegate extends RouterDelegate<MyNavigationState>
         const MaterialPage(child: MainPage()),
         if (myNS?.item == true)
           MaterialPage(
-              child: ItemPage(item: param['item'] as String), name: 'item')
+              child: ItemPage(
+                item: param['item'] as String,
+                image: param['image'] as int,
+              ),
+              name: 'item')
       ],
       onPopPage: onPop,
     );

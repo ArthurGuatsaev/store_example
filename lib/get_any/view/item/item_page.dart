@@ -7,7 +7,12 @@ import '../../domain/blocs/file/file_bloc.dart';
 
 class ItemPage extends StatelessWidget {
   final String item;
-  const ItemPage({super.key, required this.item});
+  final int image;
+  const ItemPage({
+    super.key,
+    required this.item,
+    required this.image,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +25,8 @@ class ItemPage extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           return switch (constraints.minWidth) {
-            < 500 => SItemPage(item: item),
-            _ => SItemPage(item: item),
+            < 500 => SItemPage(item: item, image: image),
+            _ => SItemPage(item: item, image: image),
           };
         },
       ),

@@ -3,13 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:store_example/const/extension.dart';
 import 'package:store_example/get_any/domain/blocs/file/file_bloc.dart';
+import 'package:store_example/get_any/view/main/widgets/my_listtile.dart';
 import 'package:store_example/get_any/view/widgets/my_appbar.dart';
 
 class SItemPage extends StatefulWidget {
   final String item;
+  final int image;
   const SItemPage({
     super.key,
     required this.item,
+    required this.image,
   });
 
   @override
@@ -33,11 +36,17 @@ class _SItemPageState extends State<SItemPage> {
           SliverToBoxAdapter(
             child: Hero(
               tag: 'item ${widget.item}',
-              child: Container(
-                width: 100,
-                height: 199,
-                color: context.color.primary,
-                child: Center(child: Text(value!)),
+              child: FittedBox(
+                child: Container(
+                  color: context.color.primary,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ImageHolder(image: 'assets/images/${widget.image}.png'),
+                      Text(value!),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),

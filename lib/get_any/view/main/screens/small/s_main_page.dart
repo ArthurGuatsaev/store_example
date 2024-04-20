@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '/navigation/router.dart';
@@ -44,13 +46,15 @@ class _AnyListViewState extends State<AnyListView> {
       itemCount: widget.state.anyList.length,
       itemBuilder: (context, index) {
         final item = widget.state.anyList[index];
+        final image = Random().nextInt(4);
         any.add(LoadNextAnyDataEvent(index: index));
         return Hero(
           tag: 'item $item',
           child: Material(
             child: MyListTile(
+              image: 'assets/images/$image.png',
               item: 'какое-то название --> $item',
-              func: () => MyNavigatorManager.instance.pushItem(item),
+              func: () => MyNavigatorManager.instance.pushItem(item, image),
             ),
           ),
         );

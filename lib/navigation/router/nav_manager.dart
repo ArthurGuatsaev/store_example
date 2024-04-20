@@ -16,9 +16,10 @@ class MyNavigatorManager {
     delegate.notify();
   }
 
-  void pushItem(String item) {
+  void pushItem(String item, int image) {
     delegate.myNS = MyNavigationState.item();
     delegate.param['item'] = item;
+    delegate.param['image'] = image;
     delegate.notify();
   }
 }
